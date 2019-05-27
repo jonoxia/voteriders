@@ -70,13 +70,17 @@ if ($header_type === 'alternate') {
 
 			<div class="large-12 columns">
 				<div class="header-middle-entry">
+				    <div id="header-left-grouping">
+                                        <?php get_template_part('header', 'logo'); ?>
 
-					<?php get_template_part('header', 'logo'); ?>
-
-					<div><img src="<?php echo get_stylesheet_directory_uri() . '/images/helpicon2-40x40.png'; ?>"
-						  style="float:left; margin-right:1em">
-					<div style="font-size:14pt; line-height:14pt; float:left; padding-left:1em">
-					Get Help Now<br clear="none"><a href="tel:844-338-8743">844-338-8743</a></div></div>
+                                        <div id="header-helplink">
+					  <img src="<?php echo get_stylesheet_directory_uri() . '/images/helpicon2-40x40.png'; ?>" >
+                                          <div>
+                                             Get Help Now<br clear="none">
+                                             <a href="tel:844-338-8743">844-338-8743</a>
+                                          </div>
+                                        </div>
+                                    </div>
 					
 					<div class="account">
 

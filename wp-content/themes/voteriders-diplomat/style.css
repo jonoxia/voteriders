@@ -17,3 +17,22 @@
     border-bottom-style: none;
     border-bottom-color: #ababab;
 }
+
+#header-helplink {
+    display: inline-block;
+    vertical-align: bottom;
+    padding-bottom: 20px;
+}
+
+#header-helplink img {
+    float:left;
+    margin-right:1em;
+}
+
+#header-helplink div {
+    font-size:14pt;
+    line-height:14pt;
+    float:left;
+    padding-left:1em;
+    font-family:Verdana;
+}
