@@ -554,6 +554,14 @@ class TMM_Helper {
 						    'title' => esc_attr(sprintf(__("View all posts in %s", 'diplomat'), $categories->name)),
 					    );
 				    } else {
+                                        /* UFaqs plugin-generated FAQ pages don't have a category
+                                         so are incompatible with how diplomat makes breadcrumbs.
+                                         quick-and-dirty fix: check if 'ufaqs' is in URL and
+                                         insert a breadcrumb if it is.*/
+                                        if (strpos($_SERVER['REQUEST_URI'], '/ufaqs/')!==false) {
+                                            $breadcrumbs[] = array(
+                                              'href' => '/get-voter-id/', 'text' => __('Get Your Voter ID', 'diplomat'), 'title' => '');
+					}
 					    $breadcrumbs[] = array(
 						    'action' => 'tmm_breadcrumbs_category_item',
 					    );
