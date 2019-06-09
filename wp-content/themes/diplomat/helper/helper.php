@@ -558,13 +558,35 @@ class TMM_Helper {
                                          so are incompatible with how diplomat makes breadcrumbs.
                                          quick-and-dirty fix: check if 'ufaqs' is in URL and
                                          insert a breadcrumb if it is.*/
-                                        if (strpos($_SERVER['REQUEST_URI'], '/ufaqs/')!==false) {
-                                            $breadcrumbs[] = array(
-                                              'href' => '/get-voter-id/', 'text' => __('Get Your Voter ID', 'diplomat'), 'title' => '');
-					}
-					    $breadcrumbs[] = array(
-						    'action' => 'tmm_breadcrumbs_category_item',
-					    );
+					 
+                                         if (strpos($_SERVER['REQUEST_URI'], '/ufaqs/')!==false) {
+                                             $ufaq_category = get_post_meta($post->ID, '_yoast_wpseo_primary_ufaq-category', true);
+					     if ($ufaq_category == '112') {
+					       $breadcrumbs[] = array(
+					         'href' => '/voter-id-for-absentee-ballots/', 'text' => __('Voter ID for Absentee Ballots', 'diplomat'), 'title' => '');
+					     }
+					     elseif ($ufaq_category == '273') {
+					       $breadcrumbs[] = array(
+					         'href' => '/partner-organizations/', 'text' => __('Partner Orgs', 'diplomat'), 'title' => '');
+					     }
+					     elseif ($ufaq_category == '26') {
+					       $breadcrumbs[] = array(
+                                                 'href' => '/get-voter-id/', 'text' => __('Get Your Voter ID', 'diplomat'), 'title' => '');
+                                             }
+					     else {
+					       $breadcrumbs[] = array(
+                                                 'href' => '/faqs/', 'text' => __('FAQs', 'diplomat'), 'title' => '');
+					     }
+				         } elseif (strpos($_SERVER['REQUEST_URI'], '/event/')!==false) {
+					   $breadcrumbs[] = array(
+                                                 'href' => '/calendar/', 'text' => __('Elections/Events Calendar', 'diplomat'), 'title' => '');
+					 } elseif (strpos($_SERVER['REQUEST_URI'], '/team-page/')!==false) {
+					   $breadcrumbs[] = array(
+                                                 'href' => '/what-we-do/our-team/', 'text' => __('Team', 'diplomat'), 'title' => '');
+					 }
+					 $breadcrumbs[] = array(
+					   'action' => 'tmm_breadcrumbs_category_item',
+					 );
 				    }
 
 				    if (is_single()) {
