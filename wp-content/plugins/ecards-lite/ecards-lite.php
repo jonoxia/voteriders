@@ -60,6 +60,19 @@ function eCardsInstall() {
     }
     $result = maybe_convert_table_to_utf8mb4($tablename);
 
+    $table_name = $wpdb->prefix . 'ecards_address_book';
+    if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
+        $sql = "CREATE TABLE " . $table_name . " (
+                address text NOT NULL,
+                last_sent date NOT NULL,
+                sent_count integer NOT NULL DEFAULT 0,
+                received_count integer NOT NULL DEFAULT 0,
+                UNIQUE KEY address
+        );";
+        dbDelta($sql);
+    }
+    $result = maybe_convert_table_to_utf8mb4($tablename);
+
     // Default options
     add_option('ecard_label_name_own', 'Your name');
     add_option('ecard_label_email_own', 'Your email address');
@@ -209,7 +222,7 @@ function display_ecardMe() {
 
 			$ecard_label_success = get_option('ecard_label_success');
             echo '<p class="ecard-confirmation"><strong>' . $ecard_label_success . '</strong></p>';
-			ecards_save();
+			ecards_save($ecard_from, $ecard_to);
 		}
 	}
 

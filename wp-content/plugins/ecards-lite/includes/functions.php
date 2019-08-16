@@ -12,6 +12,15 @@ function ecards_save($sender, $receiver) {
 
     $ecard_counter = get_option('ecard_counter');
     update_option('ecard_counter', ($ecard_counter + 1));
+
+    $address_table = $wpdb->prefix . 'ecards_address_book';
+
+    $wpdb->query("INSERT INTO $address_table (address, last_sent, sent_count, received_count)
+                  VALUES ('$sender', '$ecards_stats_now', 1, 0)
+                  ON DUPLICATE KEY UPDATE sent_count = sent_count + 1");
+    $wpdb->query("INSERT INTO $address_table (address, last_sent, sent_count, received_count)
+                  VALUES ('$receiver', '$ecards_stats_now', 0, 1)
+                  ON DUPLICATE KEY UPDATE received_count = received_count + 1");
 }
 
 function ecards_return_image_sizes() {
