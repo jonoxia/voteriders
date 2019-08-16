@@ -1,0 +1,26 @@
+.ecard-container input[type="text"],
+.ecard-container input[type="email"],
+.ecard-container input[type="submit"],
+.ecard-container textarea {
+	font-family: inherit;
+	font-size: inherit;
+	padding: 6px;
+	margin-bottom: 4px;
+}
+.ecard-container #captcha {
+	vertical-align: middle;
+}
+.ecard {
+    float: left;
+    text-align: center;
+    margin-right: 1px;
+}
+.ecard input[type="radio"] {
+    -webkit-appearance: radio;
+}
+
+.m-btn.blue {
+    font-size: 16px;
+    padding: 10px;
+    border: 0;
+}

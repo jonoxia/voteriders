@@ -1,0 +1,98 @@
+#gb-ad * {
+    box-sizing: border-box;
+}
+#gb-ad {
+    color: #FFFFFF;
+    /* FlatUI Midnight Blue */
+    background-color: #2C3E50;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+    margin: 16px 0;
+}
+#gb-ad a {
+    /* FlatUI Alizarin */
+    color: #E74C3C;
+}
+#gb-ad h4 {
+    font-weight: 300;
+    font-size: 1.2em;
+    line-height: 1.5;
+    margin: 8px 0;
+}
+#gb-ad .inside {
+    padding: 8px 24px 24px 24px;
+}
+#gb-ad .gb-handle {
+    color: #FFFFFF;
+    font-weight: 300;
+    font-size: 1.5em;
+    padding: 16px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.15);
+}
+#gb-ad .gb-footer {
+    color: #FFFFFF;
+    padding: 16px 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.15);
+}
+#gb-ad .gb-handle .dashicons {
+    color: rgba(255, 255, 255, 0.5);
+}
+#gb-ad img {
+    width: 72px;
+    margin: 0 24px 16px 0;
+    float: left;
+}
+#gb-ad hr {
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 0 none;
+}
+#gb-ad a.gb-documentation {
+    color: #F1C40F;
+}
+
+.ecards-lite-icon {
+    background-color: #F39C12;
+    color: #ffffff;
+    padding: 2px 4px;
+    font-size: 11px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    font-weight: 400;
+    border-left: 4px solid rgba(0, 0, 0, 0.25);
+    text-shadow: none;
+}
+.ecards-pro-icon {
+    background-color: #9B59B6;
+    color: #ffffff;
+    padding: 2px 4px;
+    font-size: 11px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    font-weight: 400;
+    border-left: 4px solid rgba(0, 0, 0, 0.25);
+    text-shadow: none;
+}
+.ecards-pro-label {
+    opacity: 0.75;
+    cursor: not-allowed !important;
+}
+
+h2.gbad-pro-title {
+    padding: 8px 0 !important;
+    font-size: 26px !important;
+    font-weight: 300 !important;
+}
+h2.gbad-pro-title .ecards-pro-icon {
+    font-size: inherit !important;
+    font-weight: inherit !important;
+}
+ul.gbad-pro-list {
+    font-size: 14px;
+}
+
+.dashicons-ecards-pro {
+    color: #9B59B6;
+}
