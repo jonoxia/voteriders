@@ -345,3 +345,29 @@ function ecards_settings_link($links) {
 }
 $plugin = plugin_basename(__FILE__); 
 add_filter("plugin_action_links_$plugin", 'ecards_settings_link');
+
+// Register a post type so we can have permanent URLs for each card template
+// These URLs will be of the form /ecards_lite_card/%cardname%
+// Template for the archive page (card gallery) will be archive-ecards_lite_card.php
+// Template for single card sending form pages will be single-ecards_lite_card.php.
+// See https://developer.wordpress.org/plugins/post-types/registering-custom-post-types/
+function ecards_lite_custom_post_type()
+{
+    register_post_type('ecards_lite_card',
+                       array(
+                           'labels'      => array(
+                               'name'          => __('E-Cards'),
+                               'singular_name' => __('E-Card'),
+                           ),
+                           'public'      => true,
+                           'has_archive' => true,
+                           'description' => 'E-Cards for users to send to friends',
+                           'menu_icon' => 'dashicons-email-alt2',
+                           'supports' => array('title', 'editor', 'thumbnail')
+                       )
+    );
+    // Note: it's important that the new custom post type support "thumbnail"
+    // (AKA "Featured Image") because that is the image that will be attached to the
+    // sent email, i.e. that's the actual card.
+}
+add_action('init', 'ecards_lite_custom_post_type');
