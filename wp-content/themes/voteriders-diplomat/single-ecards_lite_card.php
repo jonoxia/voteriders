@@ -2,8 +2,10 @@
 // Single E-Card Page
 get_header(); ?>
 
-<div class="wrap">
-    <div id="primary" class="content-area">
+<div class="row">
+  <div class="small-12 large-8 columns" role="main">
+    <article id="post-" class="">
+      <div class="entry-content">
         <main id="main" class="site-main" role="main">
             <?php  while ( have_posts() ) : the_post(); ?>
                 <?php
@@ -13,8 +15,10 @@ get_header(); ?>
                 <?php the_content(); ?>
             <?php endwhile; ?>
         </main>
-    </div>
-    <?php get_sidebar(); ?>
+      </div>
+    </article>
+  </div>
+  <?php get_sidebar(); ?>
 </div>
 
 <?php get_footer(); ?>
