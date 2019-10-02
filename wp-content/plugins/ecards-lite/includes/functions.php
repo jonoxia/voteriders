@@ -94,3 +94,38 @@ function eCardsGetVersion() {
 
     return (string) $eCardsData['Version'];
 }
+
+function eCardsExportCsv() {
+    // Create CSV download of email addresses stored in the database
+    global $wpdb;
+
+    $table_name = $wpdb->prefix . 'ecards_address_book';
+
+    $sql = "SELECT DISTINCT(address) FROM " . $table_name . ";";
+    
+    $results =  $wpdb->get_results($sql);
+    $addresses = array();
+    foreach( $results as $row) {
+        if (strpos($row->address, '@') == false) {
+            continue;
+        }
+        $addresses[] = $row->address;
+    }
+    $content = "email_address\n" . join("\n", $addresses);
+
+    ob_clean(); // we have already  generated part of the admin page by the time this
+    // function has been called, so that admin page text would be part of the output file.
+    // ob_clean forcibly deletes what's already in the output buffer to prevent this.
+    // It's inelegant but it works.
+    header('Pragma: no-cache');
+    header('Expires: 0');
+    header('Content-Type: application/csv'); 
+    // header("Content-length: " . filesize($NewFile)); 
+    header('Content-Disposition: attachment; filename="ecard_email_address_archive.csv"');
+
+    $fp = fopen("php://output", "w");
+    fputs($fp, $content);
+    fclose($fp);
+    // Be sure to call exit; after this so that the page's closing tags don't go into the
+    // csv download stream.
+}

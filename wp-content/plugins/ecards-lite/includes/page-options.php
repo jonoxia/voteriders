@@ -6,6 +6,10 @@ function ecard_options_page() {
 
 	$ecard_counter = get_option('ecard_counter');
 
+    if (isset($_POST['download_email_addresses'])) {
+      eCardsExportCsv();
+      exit;
+    }
 	if(isset($_POST['info_settings_update'])) {
 		update_option('ecard_label', sanitize_text_field($_POST['ecard_label']));
 
@@ -129,6 +133,11 @@ function ecard_options_page() {
 
 						<p>Use <code>.ecards</code> class as a selector for lightbox plugins. Based on your plugin configuration, you can also use <code>.ecard a</code> as a selector.</p>
 					</div>
+                    <div>
+                      <form method="post" action="">
+                        <input type="hidden" name="download_email_addresses">
+                        <input type="submit" value="Download Email Addresses (CSV)">
+                      </form>
 				</div>
 			</div>
         <?php } if($active_tab === 'ecards_pro') { ?>
